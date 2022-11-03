@@ -3,11 +3,11 @@
 Converts quantities between different units of measure, using text input to specify the quantity, unit prefix and the unit. The resulting quantity is of type "double". The converter must be instantiated as an object. Conversion function is 
 public double UnitConverter.Convert((string convertFrom, string convertTo)
 
-Language:		C#
-Version:		.NET Version 6.0
-Supported Units:	meters, feet, inches, 
-			bits, bytes, 
-			Fahrenheits and Celsius degrees
+Language:&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;	C#<br />
+Version:&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;		.NET Version 6.0<br />
+Supported Units:&ensp;	meters, feet, inches, <br />
+			&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;bits, bytes, <br />
+			&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Fahrenheits and Celsius degrees<br />
 
 ## Input specification
 The input must consist of two strings:
@@ -21,22 +21,22 @@ Type "double". In case of incorret input, the library returns "double.NaN" - not
 ## Expansibility
 The library can be easily expanded by editing the file Resources.cs. 
 To add additional units of measure, add the unit name into public enum Unit{ ... }. 
-To add conversion between units, edit the class Resources, function 
+To add conversion between units, edit the class Resources, function <br />
 public void InitializeConversions()
 
 Each conversion is identified by the unit1 and unit2, input as elements of enum. The conversion itself may be defined by
 - factor which will be used to multiply the given quantity to convert it from unit 1 to unit 2. The reverse conversion uses the same factor by division.
 - a pair of functions to convert the quantity to and from units unit1 and unit2. The functions may by entered as lambda expressions or they may be defined    sepparately as members of the Resources class.
 
-The following functions facilitate the addition: 
-public void Add(Unit unit1, Unit unit2, Conversion conversion) //adding a new conversion
-public void Add(Unit unit1, Unit unit2, double factor) //adding a generic one factor conversion
-public void Add(Unit unit1, Unit unit2, conversionFunction cf1, conversionFunction cf2)
+The following functions facilitate the addition: <br />
+public void Add(Unit unit1, Unit unit2, Conversion conversion) //adding a new conversion<br />
+public void Add(Unit unit1, Unit unit2, double factor) //adding a generic one factor conversion<br />
+public void Add(Unit unit1, Unit unit2, conversionFunction cf1, conversionFunction cf2)<br />
 
-To add a unit prefix, add its name into the Prefix enum together with the value it should represent. The value is taken as an exponent of 10. Alternatively the prefix can be added as a string and value in the 
+To add a unit prefix, add its name into the Prefix enum together with the value it should represent. The value is taken as an exponent of 10. Alternatively the prefix can be added as a string and value in the <br />
 public void InitializePrefixes().
 
 ## Testing
-Testing is done under the console application project TestForUnitConverter, within the solution. Additional tests can be included by editing the Program.Main[] function. The function call is 
-public void Run(string inputSpec, string outputSpec)
+Testing is done under the console application project TestForUnitConverter, within the solution. Additional tests can be included by editing the Program.Main[] function. The function call is <br />
+public void Run(string inputSpec, string outputSpec)<br />
 in the class Test.
