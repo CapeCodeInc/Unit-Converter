@@ -27,25 +27,28 @@ namespace UnitConverterLib
         {
             //double result = double.NaN;
             
-            ParseResult input = Parser.ParseInput(convertFrom);
-            ParseResult output = Parser.ParseOutput(convertTo);
+            ParseResult inputSpec = Parser.ParseInput(convertFrom);
+            ParseResult outputSpec = Parser.ParseOutput(convertTo);
 
-            if (input.unit == Unit._missing && output.unit != Unit._missing)
+            if (double.IsNaN(inputSpec.value))
+                return double.NaN;  //The quantity is not present. Conversion cannot yield a number.
+
+            if (inputSpec.unit == Unit._missing && outputSpec.unit != Unit._missing)
                 return double.NaN;  //One of the units is not present. Units are not compatible
 
-            if (input.unit != Unit._missing && output.unit == Unit._missing)
+            if (inputSpec.unit != Unit._missing && outputSpec.unit == Unit._missing)
                 return double.NaN;  //One of the units is not present. Units are not compatible
 
-            if (input.unit == Unit._notFound || output.unit == Unit._notFound)
+            if (inputSpec.unit == Unit._notFound || outputSpec.unit == Unit._notFound)
                 return double.NaN;  //At least one of the units is incorrect
 
-            if (input.unit == output.unit)  //Unit from and unit to are the same. Converting only prefixes
-                return input.value * input.prefix / output.prefix;  //this will also run if no units are entered
+            if (inputSpec.unit == outputSpec.unit)  //Unit from and unit to are the same. Converting only prefixes
+                return inputSpec.value * inputSpec.prefix / outputSpec.prefix;  //this will also run if no units are entered
 
-            input.value *= input.prefix;
-            double result = Conversions.Convert(input.value, input.unit, output.unit);
+            inputSpec.value *= inputSpec.prefix;
+            double result = Conversions.Convert(inputSpec.value, inputSpec.unit, outputSpec.unit);
 
-            return result/output.prefix;
+            return result/outputSpec.prefix;
         }
 
 

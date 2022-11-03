@@ -3,6 +3,7 @@ namespace UnitConverterLib
 {
     internal class StringParser
     {
+        //Parses input strings and returns tokens for conversion
         //unit strings - will be entered in plural in small letters
         PrefixCollection Prefixes;
         UnitCollection Units;
@@ -67,9 +68,9 @@ namespace UnitConverterLib
             if (pos < 0)
                 return Unit._notFound;
 
-            string p = spec.Substring(pos,spec.Length - pos); //to the end of the string
-            if (Units.ContainsKey(p))
-                return Units[p];
+            string subspec = spec.Substring(pos,spec.Length - pos); //from pos to the end of the string
+            if (Units.ContainsKey(subspec))
+                return Units[subspec];
             
             return Unit._notFound;
         }
@@ -82,21 +83,17 @@ namespace UnitConverterLib
             result.unit = ReadUnit(spec, ref pos);
 
             return result;
-            //would help to handle exceptions here
         }
         public ParseResult ParseOutput(string spec)
         {
             int pos = 0;
             ParseResult result = new ParseResult();
+            result.value = double.NaN;
             result.prefix = ReadPrefix(spec, ref pos);
             result.unit = ReadUnit(spec, ref pos);
 
             return result;
-         
         }
-        //Exception ParsingException
-        //{
-        //    string message
-        //}
+        
     }
 }
