@@ -15,8 +15,12 @@ First string specifies the quantity to convert, and unit prefix and unit to conv
 All prefix names are input as a word in lower case letters, i.e. "megabyte". 
 All units names are input as a word in English, plural only, i.e. "fahrenheits", "celsius".
 Similarly the second string specifies the unit prefix and unit to convert to.
-Result
-Type "double". In case of incorret input, the library returns "double.NaN" - not a number. Incorrect input may be missing quanitity, unrecognizable units, mismatched units, missing conversion.
+
+## Result
+is of the type "double". In case of incorret input, the library returns "double.NaN" - not a number. Incorrect input may be missing quanitity, unrecognizable units, mismatched units, missing conversion.
+
+## Usage without units of measure
+The library can be used just to evaluate the value of prefixes of a given quantity without units. For example "20 kilo" converted to "" yields 20 000. This could be considered an inconsistent input, but it is also a useful function.
 
 ## Expansibility
 The library can be easily expanded by editing the file Resources.cs. 
@@ -39,4 +43,4 @@ public void InitializePrefixes().
 ## Testing
 Testing is done under the console application project TestForUnitConverter, within the solution. Additional tests can be included by editing the Program.Main[] function. The function call is <br />
 public void Run(string inputSpec, string outputSpec)<br />
-in the class Test.
+in the class Test. If the conversion yields a number, the same conversion is run back to verify the result. In cases of incorrect input the library yielded the "double.NaN" result. In all other cases the conversion has been reversible. 
