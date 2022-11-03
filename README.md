@@ -30,7 +30,7 @@ public void InitializeConversions()
 
 Each conversion is identified by the unit1 and unit2, input as elements of enum. The conversion itself may be defined by
 - factor which will be used to multiply the given quantity to convert it from unit 1 to unit 2. The reverse conversion uses the same factor by division.
-- a pair of functions to convert the quantity to and from units unit1 and unit2. The functions may by entered as lambda expressions or they may be defined    sepparately as members of the Resources class.
+- a pair of functions to convert the quantity to and from units unit1 and unit2. The functions may be entered as lambda expressions or they may be defined    sepparately as members of the Resources class.
 
 The following functions facilitate the addition: <br />
 public void Add(Unit unit1, Unit unit2, Conversion conversion) //adding a new conversion<br />
