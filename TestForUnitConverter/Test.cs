@@ -13,7 +13,7 @@ namespace TestForUnitConverter
         }
         public void Run(string inputSpec, string outputSpec)
         {
-            
+            //if the conversion yields a number, the same conversion is run back to verify the result
             PrintInput(inputSpec, outputSpec);
             double result = Converter.Convert(inputSpec, outputSpec);
             PrintResult(result, outputSpec);

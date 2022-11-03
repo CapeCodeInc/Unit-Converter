@@ -43,13 +43,14 @@ namespace UnitConverterLib
             if (pos < 0)
                 return result;
 
-            foreach (KeyValuePair<string, int> kvp in Prefixes)
+            string subspec2 = spec.Substring(pos, spec.Length - pos); //spec without the number part
+
+            foreach (KeyValuePair<string, double> kvp in Prefixes)
             {
                 string s = kvp.Key;
                 if (s.Length + pos > spec.Length)
                     continue;
 
-                string subspec2 = spec.Substring(pos, spec.Length - pos);
                 if (subspec2.StartsWith(kvp.Key))
                 {
                     result = kvp.Value;

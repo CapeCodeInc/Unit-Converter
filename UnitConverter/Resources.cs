@@ -1,7 +1,8 @@
 ﻿
 namespace UnitConverterLib
 {
-    public enum Unit
+    //BASIC ENUMS
+    public enum Unit    //add additional unit names here
     {
         _notFound,
         _missing,
@@ -11,7 +12,9 @@ namespace UnitConverterLib
         celsius,
         fahrenheits,
         bits,
-        bytes
+        bytes,
+        L100Km,
+        MPG
     };
     public enum Prefix
     {
@@ -71,6 +74,10 @@ namespace UnitConverterLib
             //Data
             Conversions.Add(Unit.bytes, Unit.bits, 8d);
 
+            //more complex case
+            Conversions.Add(Unit.L100Km, Unit.MPG, (x => 100*3.785411784/(1.609344*x)), (x => 100 * 3.785411784 / (1.609344 * x)));
+
+
         }
         public void InitializePrefixes()
         {
@@ -80,9 +87,12 @@ namespace UnitConverterLib
 
             for (int i = 0; i < names.Length; i++)
             {
-                Prefixes.Add(names[i], (int)Math.Pow(10d, values[i]));
+                Prefixes.Add(names[i], (double)Math.Pow(10d, values[i]));
 
             }
+
+            //adding dozen
+            Prefixes.Add("dozen", 12);
         }
         public void InitializeUnits()
         {

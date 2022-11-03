@@ -2,7 +2,7 @@
 
 namespace UnitConverterLib
 {
-    public class PrefixCollection : Dictionary<string, int> 
+    public class PrefixCollection : Dictionary<string, double> 
     {
         
     }
