@@ -2,8 +2,8 @@
 namespace UnitConverterLib
 {
     //BASIC ENUMS
-    public enum Unit    //add additional unit names here
-    {
+    public enum Unit    //allows to add additional unit names here
+    {                   //additional units may be added in 
         _notFound,
         _missing,
         meters,
@@ -16,8 +16,10 @@ namespace UnitConverterLib
         L100Km,
         MPG
     };
-    public enum Prefix
-    {
+    public enum Prefix  //allows to add additional prefix names and values
+    {                   //based on the power of 10
+                        //additional prefixes may be added in Resources.InitializePrefixes()
+                        //using general values
         yotta = 24,
         zetta = 21,
         exa = 18,
@@ -41,8 +43,8 @@ namespace UnitConverterLib
     }
     
     
-    class Resources
-    {
+    class Resources     //Edit InitializePrefixes(), InitializeConversions() to 
+    {                   //expand the capabilities of the library
         UnitConverter Converter;
         ConversionCollection Conversions;
         PrefixCollection Prefixes;
@@ -59,8 +61,20 @@ namespace UnitConverterLib
             InitializeUnits();
 
         }
-        public void InitializeConversions()
-        {
+        public void InitializeConversions()     //Simple factor conversions can be added providing the unit pair
+                                                //and the corresponding factor.
+        {                                       //More complex conversions can be added as pairs of units and 
+                                                //conversion functions. The functions have to conform to: 
+                                                //public delegate double conversionFunction(double input);
+                                                //They can either become member functions of the Resources class
+                                                //or they can be directly added as lambda expressions into the
+                                                //ConversionColection.public void Add(Unit unit1, Unit unit2,
+                                                //conversionFunction cf1, conversionFunction cf2)
+                                                //
+                                                //It is possible to enter "null" in place of either one of the  
+                                                //functions. This will result in a compiler warning, but it will
+                                                //work. The converter will return double.NaN for the
+                                                //missing conversion.
             Conversions.Clear();
 
             //Length
@@ -79,7 +93,7 @@ namespace UnitConverterLib
 
 
         }
-        public void InitializePrefixes()
+        public void InitializePrefixes()    //Add new prefixes as a pair of string and value
         {
             Prefixes.Clear();
             string[] names = (string[])Enum.GetNames(typeof(Prefix));

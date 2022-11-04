@@ -24,13 +24,22 @@ namespace UnitConverterLib
         public double Convert(double value, Unit unit1, Unit unit2)
         {
             foreach (KeyValuePair<UnitPair, Conversion> kvp in this)
-            {   
-                if (kvp.Key.Contains(unit1, unit2) == searchresult.foundAsForward) 
-                    return kvp.Value.ConversionThere(value);
-                
+            {
+                if (kvp.Key.Contains(unit1, unit2) == searchresult.foundAsForward)
+                {
+                    if (kvp.Value.ConversionThere == null)
+                        return double.NaN;  //The conversion function is not present
+                    else
+                        return kvp.Value.ConversionThere(value);
+                }
+
                 if (kvp.Key.Contains(unit1, unit2) == searchresult.foundAsReverse)
-                    return kvp.Value.ConversionBack(value);
-                
+                {
+                    if (kvp.Value.ConversionBack == null)
+                        return double.NaN;  //The conversion function is not present
+                    else
+                        return kvp.Value.ConversionBack(value);
+                }                
             }
             return double.NaN;  //there is no conversion for the given unit pair
         }
