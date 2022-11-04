@@ -3,11 +3,13 @@
 Converts quantities between different units of measure, using text input to specify the quantity, unit prefix and the unit. The resulting quantity is of type "double". The converter must be instantiated as an object. Conversion function is 
 public double UnitConverter.Convert((string convertFrom, string convertTo)
 
-Language:&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;	C#<br />
-Version:&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;		.NET Version 6.0<br />
-Supported Units:&ensp;	meters, feet, inches, <br />
-			&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;bits, bytes, <br />
-			&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Fahrenheits and Celsius degrees<br />
+Language:&emsp;&emsp;&emsp;&emsp;&ensp;	C#<br />
+Version:&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;	.NET Version 6.0<br />
+Supported Units:&emsp;&ensp;			meters, feet, inches, <br />
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; bits, bytes, <br />
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Fahrenheits and Celsius degrees<br />
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; liters/100km(L100Km), MPG<br />
+
 
 ## Input specification
 The input must consist of two strings:
@@ -37,8 +39,9 @@ public void Add(Unit unit1, Unit unit2, Conversion conversion) //adding a new co
 public void Add(Unit unit1, Unit unit2, double factor) //adding a generic one factor conversion<br />
 public void Add(Unit unit1, Unit unit2, conversionFunction cf1, conversionFunction cf2)<br />
 
-To add a unit prefix, add its name into the Prefix enum together with the value it should represent. The value is taken as an exponent of 10. Alternatively the prefix can be added as a string and value in the <br />
-public void InitializePrefixes().
+To add a unit prefix based on the power of 10, add its name into the Prefix enum together with the value of the exponent. Alternatively prefixes such as "dozen = 12" can be added as a string and value in the <br />
+public void InitializePrefixes() <br />
+function of the Resources class.
 
 ## Testing
 Testing is done under the console application project TestForUnitConverter, within the solution. Additional tests can be included by editing the Program.Main[] function. The function call is <br />
