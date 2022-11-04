@@ -24,7 +24,7 @@ is of the type "double". In case of incorret input, the library returns "double.
 ## Usage without units of measure
 The library can be used just to evaluate the value of prefixes of a given quantity without units. For example "20 kilo" converted to "" yields 20 000. This could be considered an inconsistent input, but it is also a useful function.
 
-## Expansibility
+## Extensibility
 The library can be easily expanded by editing the file Resources.cs. 
 To add additional units of measure, add the unit name into public enum Unit{ ... }. 
 To add conversion between units, edit the class Resources, function <br />
@@ -49,4 +49,4 @@ public void Run(string inputSpec, string outputSpec)<br />
 in the class Test. If the conversion yields a number, the same conversion is run back to verify the result. In cases of incorrect input the library yielded the "double.NaN" result. In all other cases the conversion has been reversible. 
 
 ## Future Development
-Part of the intention was to demonstrate handling of text input. Converting text input into scientific language for further software development would make for a good class library project on its own. Here it brings limitations to the intended use for converting between pairs of units. For example some units and their prefixes have Greek symbols. The use of enums to represent resource data was intended to simplify the expansibility of the library, but in the present it complicates matters while there is little performance enhancement. Further, in other projects the data to convert will typically exist as numbers and unit information. In the future I will atttempt to separate text input and provide text output. This will also make the business part run faster, and simplify use. It is not inconceivable that the library could provide a static environment that does not need to be instantiated when used in other prograns.
+Part of the intention was to demonstrate handling of text input. Converting text input into scientific language for further software development would make for a good class library project on its own. Here it brings limitations to the intended use for converting between pairs of units. For example some units and their prefixes have Greek symbols. The use of enums to represent resource data was intended to simplify the extensibility of the library, but in the present it complicates matters while there is little performance enhancement. Further, in other projects the data to convert will typically exist as numbers and unit information. In the future I will atttempt to separate text input and provide text output. This will also make the business part run faster, and simplify use. It is not inconceivable that the library could provide a static environment that does not need to be instantiated when used in other prograns.
