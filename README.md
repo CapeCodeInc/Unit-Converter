@@ -36,9 +36,9 @@ Each conversion is identified by the unit1 and unit2, input as elements of enum.
 - a pair of functions to convert the quantity to and from units unit1 and unit2. The functions may be entered as lambda expressions or they may be defined    sepparately as members of the Resources class.<br />
 
 The following functions facilitate the addition: <br />
-public void Add(Unit unit1, Unit unit2, Conversion conversion) //adding a new conversion<br />
 public void Add(Unit unit1, Unit unit2, double factor) //adding a common one factor conversion<br />
-public void Add(Unit unit1, Unit unit2, conversionFunction cf1, conversionFunction cf2)<br />
+public void Add(Unit unit1, Unit unit2, conversionFunction cf1, conversionFunction cf2) //adding a conversion defined by two functions<br />
+public void Add(Unit unit1, Unit unit2, Conversion conversion) //adding a new conversion object<br />
 
 To add a unit prefix based on the power of 10, add its name into the Prefix enum together with the value of the exponent. Alternatively prefixes such as "dozen = 12" can be added as a string and value in the <br />
 public void InitializePrefixes() <br />
