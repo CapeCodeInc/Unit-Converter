@@ -1,6 +1,6 @@
 # Unit Converter Class Library
 
-Converts quantities between different units of measure, using text input to specify the quantity, unit prefix and the unit. The resulting quantity is of type "double". The converter must be instantiated as an object. Conversion function is 
+Converts quantities between different units of measure, using text input to specify the quantity, unit prefix and the unit. The resulting quantity is of type "double". The converter must be instantiated as an object. The Conversion call is 
 public double UnitConverter.Convert((string convertFrom, string convertTo)
 
 Language:&emsp;&emsp;&emsp;&emsp;&ensp;	C#<br />
@@ -25,18 +25,19 @@ is of the type "double". In case of incorret input, the library returns "double.
 The library can be used just to evaluate the value of prefixes of a given quantity without units. For example "20 kilo" converted to "" yields 20 000. This could be considered an inconsistent input, but it is also a useful function.
 
 ## Extensibility
-The library can be easily expanded by editing the file Resources.cs. 
+The library can be easily expanded by editing the file Resources.cs. <br />
+
 To add additional units of measure, add the unit name into public enum Unit{ ... }. 
 To add conversion between units, edit the class Resources, function <br />
-public void InitializeConversions()
+public void InitializeConversions()<br />
 
 Each conversion is identified by the unit1 and unit2, input as elements of enum. The conversion itself may be defined by
 - factor which will be used to multiply the given quantity to convert it from unit 1 to unit 2. The reverse conversion uses the same factor by division.
-- a pair of functions to convert the quantity to and from units unit1 and unit2. The functions may be entered as lambda expressions or they may be defined    sepparately as members of the Resources class.
+- a pair of functions to convert the quantity to and from units unit1 and unit2. The functions may be entered as lambda expressions or they may be defined    sepparately as members of the Resources class.<br />
 
 The following functions facilitate the addition: <br />
 public void Add(Unit unit1, Unit unit2, Conversion conversion) //adding a new conversion<br />
-public void Add(Unit unit1, Unit unit2, double factor) //adding a generic one factor conversion<br />
+public void Add(Unit unit1, Unit unit2, double factor) //adding a common one factor conversion<br />
 public void Add(Unit unit1, Unit unit2, conversionFunction cf1, conversionFunction cf2)<br />
 
 To add a unit prefix based on the power of 10, add its name into the Prefix enum together with the value of the exponent. Alternatively prefixes such as "dozen = 12" can be added as a string and value in the <br />
@@ -49,4 +50,4 @@ public void Run(string inputSpec, string outputSpec)<br />
 in the class Test. If the conversion yields a number, the same conversion is run back to verify the result. In cases of incorrect input the library yielded the "double.NaN" result. In all other cases the conversion has been reversible. 
 
 ## Future Development
-Part of the intention was to demonstrate handling of text input. Converting text input into scientific language for further software development would make for a good class library project on its own. Here it brings limitations to the intended use for converting between pairs of units. For example some units and their prefixes have Greek symbols. The use of enums to represent resource data was intended to simplify the extensibility of the library, but in the present it complicates matters while there is little performance enhancement. Further, in other projects the data to convert will typically exist as numbers and unit information. In the future I will atttempt to separate text input and provide text output. This will also make the business part run faster, and simplify use. It is not inconceivable that the library could provide a static environment that does not need to be instantiated when used in other prograns.
+Part of the intention was to demonstrate handling of text input. Converting text input into scientific language for further software development would make for a good class library project on its own. Here it brings limitations to the intended use for converting between pairs of units. For example some units and their prefixes have Greek symbols. The use of enums to represent resource data was intended to simplify the extensibility of the library, but in the present it complicates matters while there is little performance enhancement. Furthermore, in the projects taht might use the library, the data to convert will typically exist as numbers and unit information. In the future I will atttempt to separate text input and provide text output, in another library. This will also make the business part run faster, and simplify use. It is not inconceivable that the library could provide a static environment that does not need to be instantiated when used in other prograns.
